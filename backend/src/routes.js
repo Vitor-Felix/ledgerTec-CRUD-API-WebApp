@@ -1,17 +1,22 @@
 const express = require('express')
-
+//
+const bodyParser = require('body-parser')
+const db = require('../database/models')
+//
 const routes = express.Router()
 
-// Produto (id, id_categoria, descricao).
-// Categoria (id, categoria).
-// #########################################
-// A API deve possuir 5 rotas:
-
-//     Uma rota para retornar todos os produtos cadastrados.
-//     Uma rota para retornar um produto por sua chave primária.
-//     Uma rota para inserir um produto.
-//     Uma rota para atualizar um produto.
-//     Uma rota para remover um produto.
+//
+routes.get('/categorias', (request, response) => {
+    console.log(db.Categoria.findAll())  
+    // return db.Categoria.findAll()
+    // .then((categorias) => response.send(categorias))
+    // .catch((erro) => {
+    //         console.log('There was an error querying contacts', JSON.stringify(erro))
+    //         return response.send(error)
+    //     })    
+    return response.json({'ok': 'Eh noiz'})
+})
+//  
 
 routes.post('/users', (request, response) => {
     const body = request.body

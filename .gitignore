@@ -1,3 +1,9 @@
 # Módulos e package-lock, gerados pelo npm
 */node_modules/
 package-lock.json
+
+# Decidi deixar o banco de dados no repositório, 
+# visto que este funciona apenas com uma POC.
+# Também agiliza caso alguém queira testar,
+# sem necessidade de fazer as migrações e aplicar o seed.
+# database.sqlite3
