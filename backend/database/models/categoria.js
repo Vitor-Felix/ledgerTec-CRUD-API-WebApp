@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Categoria.associate = function(models) {
     // associations can be defined here
+    Categoria.hasMany(models.Produto, {
+      foreignKey: 'categoriaId',
+      onDelete: 'CASCADE',
+    });
   };
   return Categoria;
 };
