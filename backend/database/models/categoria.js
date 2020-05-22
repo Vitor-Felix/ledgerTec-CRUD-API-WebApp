@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Categoria.hasMany(models.Produto, {
       foreignKey: 'categoriaId',
+      as: 'produtos',
       onDelete: 'CASCADE',
     });
   };

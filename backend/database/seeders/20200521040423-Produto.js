@@ -3,19 +3,19 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Produtos', [{
-      categoriaId: 1,
+      categoriaId: 36,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      categoriaId: 2,
+      categoriaId: 37,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      categoriaId: 4,
+      categoriaId: 38,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
