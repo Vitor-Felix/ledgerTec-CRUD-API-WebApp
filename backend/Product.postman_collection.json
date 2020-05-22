@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "82774967-4c01-4c7b-be69-7e876e73f600",
+		"name": "Desafio LedgerTec - Produtos",
+		"description": "O que deve ser feito:\n\n[X] - Crie uma Collection no Postman com 5 requisições, sendo uma para cada rota.\n\n[X] - Exporte a Collection, de preferência na versão 2.1, e salve o arquivo no diretório\ndo projeto Node com o nome Product.postman_collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retorna todos os Produtos Cadastrados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9099/produtos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9099",
+					"path": [
+						"produtos"
+					]
+				},
+				"description": "GET http://localhost:9099/produtos/\n\nRetorna os campos [id, descricao, categoria] de todos os produtos cadastrados, por Response Body em formato JSON."
+			},
+			"response": []
+		},
+		{
+			"name": "Retorna um Produto por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9099/produtos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9099",
+					"path": [
+						"produtos",
+						"1"
+					]
+				},
+				"description": "GET http://localhost:9099/produtos/produtoId\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria] de apenas um produto dado seu id enviado por URL."
+			},
+			"response": []
+		},
+		{
+			"name": "Insere um Produto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categoriaId\": 36,\n\t\"descricao\": \"Call me a space man!!!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9099/produtos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9099",
+					"path": [
+						"produtos",
+						""
+					]
+				},
+				"description": "POST http://localhost:9099/produtos/\n\nCria novo produto no banco de dados através de Request Body JSON.\n\nSão requeridos dois campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, o id do novo produto criado."
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza um Produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\": \"ESSA DESCRIÇÃO É TOTALMENTE DIFERENTE DO TEXTO QUE HAVIA ANTES\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9099/produtos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9099",
+					"path": [
+						"produtos",
+						"1"
+					]
+				},
+				"description": "PUT http://localhost:9099/produtos/produtoId\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
+			},
+			"response": []
+		},
+		{
+			"name": "Remove um Produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9099/produtos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9099",
+					"path": [
+						"produtos",
+						"2"
+					]
+				},
+				"description": "DELETE http://localhost:9099/produtos/produtoId\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -2,20 +2,20 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Produtos', [{
-      categoriaId: 36,
+    return queryInterface.bulkInsert('Produto', [{
+      categoriaId: 1,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      categoriaId: 37,
+      categoriaId: 2,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      categoriaId: 38,
+      categoriaId: 3,
       descricao: 
         "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
       createdAt: new Date(),
@@ -24,6 +24,6 @@ module.exports = {
 },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Produtos', null, {});
+    return queryInterface.bulkDelete('Produto', null, {});
   }
 };
