@@ -1,7 +1,9 @@
-{
+const fs = require('fs');
+
+module.exports = {
   "development": {
     "dialect": "sqlite",
-    "storage": "./database.sqlite3"
+    "storage": __dirname + "/database.sqlite3"
   },
   "test": {
     "dialect": "sqlite",
@@ -9,6 +11,6 @@
   },
   "production": {
     "dialect": "sqlite",
-    "storage": "./database.sqlite3"
+    "storage": "database.sqlite3"
   }
-}
+};

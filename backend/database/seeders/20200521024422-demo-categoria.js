@@ -2,9 +2,8 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-
       return queryInterface.bulkInsert('Categoria', [{
-        categoria: 'notebook',
+        categoria: 'Notebook',
         createdAt: new Date().toDateString(),
         updatedAt: new Date().toDateString()
       }, {
@@ -12,23 +11,22 @@ module.exports = {
         createdAt: new Date().toDateString(),
         updatedAt: new Date().toDateString()
       }, {
-        categoria: 'smartphone',
+        categoria: 'Tablet',
         createdAt: new Date().toDateString(),
         updatedAt: new Date().toDateString()
       }, {
-        categoria: 'tablet',
+        categoria: 'Smartband',
         createdAt: new Date().toDateString(),
         updatedAt: new Date().toDateString()
       }, {
-        categoria: 'smartband',
+        categoria: 'Kindle',
         createdAt: new Date().toDateString(),
         updatedAt: new Date().toDateString()
       }], {});
-
   },
 
   down: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkDelete('Contacts', null, {});
+      return queryInterface.bulkDelete('Categoria', null, {});
   }
 };
