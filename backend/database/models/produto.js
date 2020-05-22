@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Produto.belongsTo(models.Categoria, {
       foreignKey: 'categoriaId',
+      as: 'categoria',
       onDelete: 'CASCADE',
     })
   };
