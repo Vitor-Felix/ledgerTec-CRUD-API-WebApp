@@ -1,9 +1,14 @@
 import React from 'react';
 
+import './global.css';
+
+import Routes from './routes'
+
+
 function App() {
   return (
-    <h1>I'm still here!</h1>
+    <Routes />    
   );
-}
+} 
 
 export default App;
