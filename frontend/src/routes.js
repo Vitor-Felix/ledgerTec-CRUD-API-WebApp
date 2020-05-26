@@ -21,8 +21,8 @@ export default function Routes() {
                 <Route path="/categorias" exact component={ListaCategorias} />
                 <Route path="/produtos" exact component={ListaProdutos} />
 
-                <Route path="/produtos/atualizar/:id" component={AtualizaProduto} />
-                <Route path="/categorias/atualizar/:id" component={AtualizaCategoria} />
+                <Route path="/produtos/atualizar" component={AtualizaProduto} />
+                <Route path="/categorias/atualizar" component={AtualizaCategoria} />
 
                 <Route path="/categorias/cadastro" component={CadastraCategoria} />
                 <Route path="/produtos/cadastro" component={CadastraProduto} />

@@ -7,7 +7,7 @@ const getAllProdutos = async (req, res) => {
         attributes: ['id', 'descricao'],
         include: {
             model: models.Categoria,
-            attributes: ['categoria'],
+            attributes: ['id', 'categoria'],
             as: "categoria"
         }
       });
@@ -26,7 +26,7 @@ const getProdutoById = async (req, res) => {
         attributes: ['id', 'descricao'],
         include: {
             model: models.Categoria,
-            attributes: ['categoria'],
+            attributes: ['id', 'categoria'],
             as: "categoria"
         }
       });
