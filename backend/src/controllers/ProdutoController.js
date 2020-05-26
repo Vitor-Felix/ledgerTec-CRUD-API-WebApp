@@ -1,4 +1,4 @@
-const models = require("../database/models");
+const models = require("../../database/models");
 
 
 const getAllProdutos = async (req, res) => {
@@ -62,6 +62,7 @@ const updateProduto = async (req, res) => {
       // O correto aqui seria status 204, mas deixei 200 para melhor visualização.
       //return res.status(204);
       const updatedPost = await models.Produto.findOne({
+        where: { id: produtoId },
         attributes: ['id', 'descricao'],
         include: {
             model: models.Categoria,
@@ -97,23 +98,10 @@ const deleteProduto = async (req, res) => {
 };
 
 
-const getAllCategorias = async (req, res) => {
-    try {
-        const categorias = await models.Categoria.findAll({
-          attributes: ['id', 'categoria']
-        });
-      return res.status(200).json({ categorias });
-    } catch (error) {
-      return res.status(500).send(error.message);
-    }
-};
-
-
 module.exports = {
     getAllProdutos,
     getProdutoById,
     createProduto,
     updateProduto,
     deleteProduto,
-    getAllCategorias
-  };
+};

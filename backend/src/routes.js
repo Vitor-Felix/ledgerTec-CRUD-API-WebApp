@@ -1,15 +1,34 @@
 const { Router } = require('express');
-const controllers = require('./controllers');
+
+const produtoController = require('./controllers/ProdutoController');
+const categoriaController = require('./controllers/CategoriaController');
 
 const router = Router();
 
+// Retorna todos os produtos
+router.get('/produtos', produtoController.getAllProdutos);
+// Retorna um produto por seu id
+router.get('/produtos/:produtoId', produtoController.getProdutoById);
+// Cria um novo produto
+router.post('/produtos', produtoController.createProduto);
+// Atualiza um produto
+router.put('/produtos/:produtoId', produtoController.updateProduto);
+// Deleta um produto
+router.delete('/produtos/:produtoId', produtoController.deleteProduto);
 
-router.get('/produtos', controllers.getAllProdutos); //Retorna todos os produtos
-router.get('/produtos/:produtoId', controllers.getProdutoById); //Retorna um produto por seu ID
-router.post('/produtos', controllers.createProduto); //Cria um novo produto
-router.put('/produtos/:produtoId', controllers.updateProduto); //Atualiza um produto
-router.delete('/produtos/:produtoId', controllers.deleteProduto); //Deleta um produto
-router.get('/categorias', controllers.getAllCategorias); //Retorna todas as categorias
+// Retorna todas as categorias
+router.get('/categorias', categoriaController.getAllCategorias);
+// Retorna uma categoria por seu id
+router.get('/categorias/:categoriaId', categoriaController.getCategoriaById);
+// Cria uma nova categoria
+router.post('/categorias', categoriaController.createCategoria);
+// Atualiza uma categoria
+router.put('/categorias/:categoriaId', categoriaController.updateCategoria);
+// Deleta uma categoria
+router.delete('/categorias/:categoriaId', categoriaController.deleteCategoria);
+// Lista todos os produtos de uma categoria, por seu id
+router.get('/categoria/:categoriaId/produtos', categoriaController.getAllProdutosByCategoria);
+
 
 
 module.exports = router;
