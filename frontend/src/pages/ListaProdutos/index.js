@@ -1,20 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiPlusCircle, FiEdit, FiTrash2, FiList } from 'react-icons/fi';
 
-// import api from '../../services/api'
+import api from '../../services/api'
 import './styles.css'
 
-// import logoImg from '../../assets/logo.svg'
 
 export default function ListaProdutos() {
+    const [produtos, setProdutos] = useState([]);
 
-    function activateLasers() {
-        if(window.confirm("Are you sure?")){
-            alert('DELETADO!!!');
-        }
-        else{
-            alert('ARREGÔ!')
+    const history = useHistory();
+
+    useEffect(() => {
+
+        api.get('produtos'
+        ).then(response => {
+            setProdutos(response.data.produtos);
+        })
+    }, []);
+
+    async function handleUpdate(produto){
+        localStorage.setItem('produtoId', produto.id);
+        localStorage.setItem('descricao', produto.descricao);
+        localStorage.setItem('categoriaId', produto.categoria.id);
+
+        history.push('/produtos/atualizar/')
+    }
+
+    async function handleDelete(id) {
+        if(window.confirm(`Tem certeza que deseja apagar o produto ${id}?`)){
+            try{
+                await api.delete(`produtos/${id}`);
+    
+                setProdutos(produtos.filter(produto => produto.id !== id));
+            } catch(err) {
+                alert(`Erro ao deletar caso: ${err}`)
+            }
         }
     }
 
@@ -39,72 +60,31 @@ export default function ListaProdutos() {
             </div>
 
             <ul>
-                <li>
-                    <strong>Categoria</strong>
-                    <p>PC-Desktop</p>
+                {produtos.map(produto => (
+                    <li key={produto.id}>
+                        <strong>Categoria</strong>
+                        <p>{(produto.categoria.categoria)}</p>
 
-                    <strong>Descrição</strong>
-                    <p>
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado! 
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado!
+                        <strong>Descrição</strong>
+                        <p>{produto.descricao}</p>
 
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado!
-                    </p>
+                        <button type="button" 
+                                className="update" 
+                                title="Atualizar produto"
+                                onClick={() => handleUpdate(produto)} >
 
-                    {/* <strong>VALOR:</strong>
-                    <p>120,00</p>    */}
-
-                    <Link to="/produtos/atualizar/1">
-                        <button type="button" className="update" title="Atualizar produto">
                             <FiEdit size={20} color="a8a8b3" />
                         </button>
-                    </Link>
 
-                    <button type="button" className="delete" title="Deletar produto"
-                            onClick={activateLasers}>
-                        <FiTrash2 size={20} color="a8a8b3" />
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Categoria</strong>
-                    <p>Smartphone</p>
-
-                    <strong>Descrição</strong>
-                    <p>
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado! 
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado!
-
-                        Aqui se espera que a descrição seja um pouco
-                        maior que só isso aqui, até onde vai essa frase?
-                        Eita danado!
-                    </p>
-
-                    {/* <strong>VALOR:</strong>
-                    <p>120,00</p>    */}
-
-                    <Link to="/produtos/atualizar/2">
-                        <button type="button" className="update" title="Atualizar produto">
-                            <FiEdit size={20} color="a8a8b3" />
+                        <button type="button" 
+                                className="delete" 
+                                title="Deletar produto"
+                                onClick={() => handleDelete(produto.id)} >
+                                    
+                            <FiTrash2 size={20} color="a8a8b3" />
                         </button>
-                    </Link>
-
-                    <button type="button" className="delete" title="Deletar produto"
-                            onClick={activateLasers}>
-                        <FiTrash2 size={20} color="a8a8b3" />
-                    </button>
-                </li>
-
+                    </li>
+                ))}
             </ul>       
         </div>
     )
