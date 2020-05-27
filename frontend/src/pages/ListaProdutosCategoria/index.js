@@ -6,18 +6,25 @@ import api from '../../services/api'
 import './styles.css'
 
 
-export default function ListaProdutos() {
+export default function ListaProdutosCategoria() {
     const [produtos, setProdutos] = useState([]);
+
+    const categoria = localStorage.getItem('categoria');
+    const categoriaId = localStorage.getItem('categoriaId');
 
     const history = useHistory();
 
     useEffect(() => {
-
-        api.get('produtos'
+        
+        api.get(`categoria/${categoriaId}/produtos`
         ).then(response => {
             setProdutos(response.data.produtos);
-        })
-    }, []);
+        });
+        
+
+        // localStorage.removeItem('categoria');
+        // localStorage.removeItem('categoriaId');
+    }, [categoriaId]);
 
     async function handleUpdate(produto){
         localStorage.setItem('produtoId', produto.id);
@@ -28,7 +35,7 @@ export default function ListaProdutos() {
     }
 
     async function handleDelete(id) {
-        if(window.confirm(`Por favor, confirme a remoção do produto ${id}`)){
+        if(window.confirm(`Tem certeza que deseja apagar o produto ${id}?`)){
             try{
                 await api.delete(`produtos/${id}`);
     
@@ -38,6 +45,7 @@ export default function ListaProdutos() {
             }
         }
     }
+
 
     return(
         <div className="lista-produtos-container">
@@ -51,13 +59,20 @@ export default function ListaProdutos() {
             </header>
 
             <div className="pagina-titulo">
-                <h1>Produtos cadastrados</h1>
+              <h1>Produtos cadastrados na categoria {categoria} </h1>
 
                 <Link className="back-link" to="/produtos/cadastro">
                     <FiPlusCircle size={18} color="#e02041" />
                     Cadastrar novo produto
                 </Link>
             </div>
+
+            {/* Exibindo mensagem caso não existam produtos */}
+            {produtos.length === 0 &&
+                <h2>
+                    Não existem produtos cadastrados para esta Categoria.
+                </h2>
+            }
 
             <ul>
                 {produtos.map(produto => (

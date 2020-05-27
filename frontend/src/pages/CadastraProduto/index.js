@@ -5,10 +5,12 @@ import { FiArrowLeftCircle } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 
+
 export default function CadastraProduto() {
     const [categoriaId, setCategoriaId] = useState('');
     const [descricao, setDescricao] = useState('');
 
+    // Para renderizar as categorias no section do HTML
     const [categorias, setCategorias] = useState([]);
 
     useEffect(() => {

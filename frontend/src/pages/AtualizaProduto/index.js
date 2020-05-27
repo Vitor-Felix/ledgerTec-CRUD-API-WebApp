@@ -5,6 +5,7 @@ import { FiArrowLeftCircle } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 
+
 export default function AtualizaProduto() {
     const [categoriaId, setCategoriaId] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -45,9 +46,9 @@ export default function AtualizaProduto() {
         });
 
         // Apagando apenas keys trazidas para esta página.
-        localStorage.removeItem('produtoId');
-        localStorage.removeItem('descricao');
-        localStorage.removeItem('categoriaId');
+        // localStorage.removeItem('produtoId');
+        // localStorage.removeItem('descricao');
+        // localStorage.removeItem('categoriaId');
     }, []);
 
     async function handleUpdate(e) {

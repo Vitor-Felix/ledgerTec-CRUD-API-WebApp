@@ -12,6 +12,8 @@ import CadastraProduto from './pages/CadastraProduto';
 import ListaProdutos from './pages/ListaProdutos';
 import ListaCategorias from './pages/ListaCategorias';
 
+import ListaProdutosCategoria from './pages/ListaProdutosCategoria';
+
 export default function Routes() {
     return (
         <BrowserRouter>
@@ -27,7 +29,7 @@ export default function Routes() {
                 <Route path="/categorias/cadastro" component={CadastraCategoria} />
                 <Route path="/produtos/cadastro" component={CadastraProduto} />
 
-                <Route path="/categoria/produtos/:id" component={ListaProdutos} />
+                <Route path="/categoria/:id/produtos" component={ListaProdutosCategoria} />
             </Switch>
         </BrowserRouter>
     );

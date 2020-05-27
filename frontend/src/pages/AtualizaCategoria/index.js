@@ -1,18 +1,67 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeftCircle } from 'react-icons/fi';
 
+import api from '../../services/api';
 import './styles.css';
 
 
 export default function AtualizaCategoria() {
+    const [categoriaOld, setCategoriaOld] = useState([]);
+    const [categoriaNome, setCategoriaNome] = useState(localStorage.getItem('categoria'));
+
+    const categoriaId = localStorage.getItem('categoriaId');
+
+    const history = useHistory();
+    
+    useEffect(() => {
+
+        // Aqui estou pegando a categoria por seu id
+        api.get(`categorias/${categoriaId}`
+        ).then(response => {
+            setCategoriaOld(response.data.categoria);
+        });
+
+    }, [categoriaId]);
+
+
+    async function handleUpdate(e) {
+        e.preventDefault();
+
+        const categoria = categoriaNome;
+        const data = {
+            categoriaId,
+            categoria
+        }
+
+        try {
+            await api.put(`categorias/${categoriaId}`, data);
+            alert(`Categoria atualizada com sucesso!`);
+
+            setCategoriaOld({'categoria': categoria});
+
+            /**
+             * Caso a página seja recarregada, o localStorage
+             * vai retornar o último valor atualizado e 
+             * renderizar no campo do input
+             */
+            localStorage.setItem('categoria', categoria);
+        } catch (err) {
+            alert(`Erro ao tentar cadastrar o produto: ${err}`);
+        }
+    }
+
+    
     return (
         <div className="cadastro-produto-container">
             <div className="content">
                 <section>
                     <h1>Atualização de Categoria</h1>
 
-                    <h2>Você está atualizando a categoria de id: <span>2000</span></h2>
+                    <h2>
+                        Você está atualizando a categoria 
+                        <span> {categoriaOld.categoria}</span>
+                    </h2>
 
                     <p>
                         Para atualizar um produto, basta selecionar uma nova categoria 
@@ -25,8 +74,11 @@ export default function AtualizaCategoria() {
                     </Link>
                 </section>
 
-                <form>
-                    <input placeholder="Escreva um título para o Produto"/>
+                <form onSubmit={handleUpdate}>
+                    <input  placeholder="Escreva um nome para a Categoria"
+                            value={categoriaNome} 
+                            onChange={e => setCategoriaNome(e.target.value)}
+                    />
 
                     <button className="button" type="submit">Atualizar</button>
                 </form>

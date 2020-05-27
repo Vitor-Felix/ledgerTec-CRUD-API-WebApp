@@ -19,6 +19,13 @@ export default function ListaCategorias() {
         })
     }, []);
 
+    async function handleListProdutosCategoria(categoria){
+        localStorage.setItem('categoriaId', categoria.id);
+        localStorage.setItem('categoria', categoria.categoria);
+
+        history.push(`/categoria/${categoria.id}/produtos`)
+    }
+
     async function handleUpdate(categoria){
         localStorage.setItem('categoriaId', categoria.id);
         localStorage.setItem('categoria', categoria.categoria);
@@ -26,22 +33,16 @@ export default function ListaCategorias() {
         history.push('/categorias/atualizar/')
     }
 
-    async function handleDelete(id) {
-        if(window.confirm("Are you sure?")){
-            alert('DELETADO!!!');
-        }
-        else{
-            alert('ARREGÔ!')
-        }
-        // if(window.confirm(`Tem certeza que deseja apagar o produto ${id}?`)){
-        //     try{
-        //         await api.delete(`produtos/${id}`);
+    async function handleDelete(categoria) {
+        if(window.confirm(`Deseja remover a categoria ${categoria.categoria}?`)){
+            try{
+                await api.delete(`categorias/${categoria.id}`);
     
-        //         setProdutos(produtos.filter(produto => produto.id !== id));
-        //     } catch(err) {
-        //         alert(`Erro ao deletar caso: ${err}`)
-        //     }
-        // }
+                setCategorias(categorias.filter(ctgr => ctgr.id !== categoria.id));
+            } catch(err) {
+                alert(`Erro ao deletar caso: ${err}`)
+            }
+        }
     }
 
     return(
@@ -50,8 +51,8 @@ export default function ListaCategorias() {
                 <span>Bem vindo(a)</span>
 
                 <Link className="back-link" to="/produtos">
-                    <FiList size={18} color="#e02041" />
-                    Listar Produtos
+                    <FiList size={18}  color="#e02041" />
+                    Listar todos os Produtos
                 </Link>
             </header>
 
@@ -66,14 +67,18 @@ export default function ListaCategorias() {
 
             <ul>
                 {categorias.map(categoria => (
-                    <li>
+                    <li key={categoria.id}>
                     <strong>Categoria</strong>
                     <h2 className="nome-categoria">{categoria.categoria}</h2>
 
-                    <Link className="back-link" to="/categoria/produtos/:id">
-                        <FiList size={18} color="#e02041" />
+                    <button type="button"
+                            className="lista-produtos-categoria"
+                            onClick={() => handleListProdutosCategoria(categoria)} >
+                        <span>
+                            <FiList size={18} color="#e02041" className="filist"/>
+                        </span>
                         Listar produtos desta categoria
-                    </Link>
+                    </button>
 
                     <button type="button" 
                             className="update" 
@@ -86,7 +91,7 @@ export default function ListaCategorias() {
                     <button type="button" 
                             className="delete" 
                             title="Deletar produto"
-                            onClick={() => handleDelete(categoria.id)}>
+                            onClick={() => handleDelete(categoria)}>
 
                         <FiTrash2 size={20} color="a8a8b3" />
                     </button>
