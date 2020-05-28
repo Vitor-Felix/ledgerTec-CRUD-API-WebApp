@@ -1,47 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRightCircle } from 'react-icons/fi';
+
+import './styles.css';
+
+import categoriasImg from '../../assets/listaCategorias_mda.png'
 
 
 export default function Home() {
+    
+        
     return (
-        <div className="lista-links">
-            <h2>Lista de links</h2>
-            <ul>
-                <li>
-                    <Link className="back-link" to="/categorias/cadastro">
-                        <FiArrowRightCircle size={18} color="#e02041" />
-                        Cadastrar nova Categoria [X]
-                    </Link>
-                </li>
-                <li>
-                    <Link className="back-link" to="/produtos/cadastro">
-                        <FiArrowRightCircle size={18} color="#e02041" />
-                        Cadastrar novo Produto [X]
-                    </Link>
-                </li>
-                <li>
-                    <Link className="back-link" to="/categorias/">
-                        <FiArrowRightCircle size={18} color="#e02041" />
-                        Listar todas as Categorias [X]
-                    </Link>
+        <div className="home-container">
+                <section>
+
+                    <h1>Cadastrador de Produtos</h1>
+                    
+                    <p>
                     <ul>
-                        <li>Aqui se encotra o método para editar Categoria [X]</li>
-                        <li>Aqui se encotra o método para excluir Categoria [X]</li>
-                        <li>Aqui se encotra o método para listar Produtos por Categoria [X]</li>
+                        <li>
+                        Ao listar todos os produtos, em cada produto existe
+                        um botão para atualizar e excluir o produto.
+                        </li>
+                        <li>
+                        Nesta mesma tela ao lado do título, pode-se cadastrar 
+                        um novo produto.
+                        </li>
+                        <li>
+                        Na barra superior, pode-se listar todas as categorias.    
+                        </li>
+                        <li>
+                        Cada categoria possui um botão, para listar apenas os
+                        produtos pertencentes a esta categoria.
+                        </li>
                     </ul>
-                </li>
-                <li>
-                    <Link className="back-link" to="/produtos/">
-                        <FiArrowRightCircle size={18} color="#e02041" />
-                        Listar todos os Produtos [X]
+                    </p>
+
+                    <Link className="back-link" to="/produtos">
+                        <button className="button">Listar todos os Produtos</button>
                     </Link>
-                    <ul>
-                        <li>Aqui se encotra o método para editar Produto [X]</li>
-                        <li>Aqui se encotra o método para excluir Produto [X]</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>    
+                </section>
+                <img src={categoriasImg} alt="exemplo de pagina"/>
+        </div>
     );
 }
