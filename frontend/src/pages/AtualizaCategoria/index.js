@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiArrowLeftCircle } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -12,7 +12,6 @@ export default function AtualizaCategoria() {
 
     const categoriaId = localStorage.getItem('categoriaId');
 
-    const history = useHistory();
     
     useEffect(() => {
 
