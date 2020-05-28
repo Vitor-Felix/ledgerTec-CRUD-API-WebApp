@@ -6,7 +6,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .atualiza-produto-container .content {
@@ -32,17 +32,17 @@
 
 .atualiza-produto-container .content section h2 {
     font-size: 18px;
-    margin: 0 0 5px; 
+    margin: 0 0 5px;
     color: #41414d;
     text-decoration: underline;
 }
 
-.atualiza-produto-container .content section h2 span{
+.atualiza-produto-container .content section h2 span {
     color: #e02041;
 }
 
 .atualiza-produto-container .content section p {
-    margin-top: 190px;  
+    margin-top: 190px;
     font-size: 18px;
     color: #737380;
     line-height: 32px;

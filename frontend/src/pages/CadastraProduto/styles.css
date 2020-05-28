@@ -6,7 +6,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .cadastro-produto-container .content {
@@ -24,17 +24,14 @@
 .cadastro-produto-container .content section {
     width: 100%;
     max-width: 380px;
-    /* background-color: violet; */
 }
 
 .cadastro-produto-container .content section h1 {
-    /* margin: 64px 0 32px; */
-    margin: 0 0 190px; /**/
+    margin: 0 0 190px;
     font-size: 32px;
 }
 
 .cadastro-produto-container .content section p {
-    /* margin-top: 190px;   */
     font-size: 18px;
     color: #737380;
     line-height: 32px;
@@ -54,12 +51,6 @@
 }
 
 .cadastro-produto-container .content form select {
-    /* font-family: inherit;
-    font-size: 100%;
-    width : 100%;
-    height: 60px;
-    border-radius: 5px;
-    background-color: #fff; */
     font-family: inherit;
     font-size: 125%;
     width: 100%;

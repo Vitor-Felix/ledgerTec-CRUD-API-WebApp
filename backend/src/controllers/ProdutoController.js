@@ -1,102 +1,95 @@
 const models = require("../../database/models");
 
-
 const getAllProdutos = async (req, res) => {
     try {
-      const produtos = await models.Produto.findAll({
-        attributes: ['id', 'descricao'],
-        include: {
-            model: models.Categoria,
-            attributes: ['id', 'categoria'],
-            as: "categoria"
-        }
-      });
-      return res.status(200).json({ produtos });
+        const produtos = await models.Produto.findAll({
+            attributes: ["id", "descricao"],
+            include: {
+                model: models.Categoria,
+                attributes: ["id", "categoria"],
+                as: "categoria",
+            },
+        });
+        return res.status(200).json({ produtos });
     } catch (error) {
-      return res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
-
 
 const getProdutoById = async (req, res) => {
     try {
-      const { produtoId } = req.params;
-      const produto = await models.Produto.findOne({
-        where: { id: produtoId },
-        attributes: ['id', 'descricao'],
-        include: {
-            model: models.Categoria,
-            attributes: ['id', 'categoria'],
-            as: "categoria"
+        const { produtoId } = req.params;
+        const produto = await models.Produto.findOne({
+            where: { id: produtoId },
+            attributes: ["id", "descricao"],
+            include: {
+                model: models.Categoria,
+                attributes: ["id", "categoria"],
+                as: "categoria",
+            },
+        });
+        if (produto) {
+            return res.status(200).json({ produto });
         }
-      });
-      if (produto) {
-        return res.status(200).json({ produto });
-      }
-      return res.status(404).send("Não existe produto com ID = " + produtoId);
+        return res.status(404).send("Não existe produto com ID = " + produtoId);
     } catch (error) {
-      return res.status(500).send(error.message);
+        return res.status(500).send(error.message);
     }
 };
-
 
 const createProduto = async (req, res) => {
     try {
-      const produto = await models.Produto.create(req.body);
+        const produto = await models.Produto.create(req.body);
 
-      return res.status(201).json({ 'produtoId': produto.id });
+        return res.status(201).json({ produtoId: produto.id });
     } catch (error) {
-      
-      return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 };
-
 
 const updateProduto = async (req, res) => {
-  try {
-    const { produtoId } = req.params;
-    const [updated] = await models.Produto.update(req.body, {
-      where: { id: produtoId }
-    });
-    if (updated) {
-      // Troquei o status 204 por 200 para melhor visualização.
-      //return res.status(204);
-      const updatedPost = await models.Produto.findOne({
-        where: { id: produtoId },
-        attributes: ['id', 'descricao'],
-        include: {
-            model: models.Categoria,
-            attributes: ['id', 'categoria'],
-            as: "categoria"
+    try {
+        const { produtoId } = req.params;
+        const [updated] = await models.Produto.update(req.body, {
+            where: { id: produtoId },
+        });
+        if (updated) {
+            // Troquei o status 204 por 200 para melhor visualização.
+            //return res.status(204);
+            const updatedPost = await models.Produto.findOne({
+                where: { id: produtoId },
+                attributes: ["id", "descricao"],
+                include: {
+                    model: models.Categoria,
+                    attributes: ["id", "categoria"],
+                    as: "categoria",
+                },
+            });
+
+            return res.status(200).json({ produto: updatedPost });
         }
-      });
-
-      return res.status(200).json({ produto: updatedPost });
+        throw new Error("Não existe produto com ID = " + produtoId);
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
-    throw new Error("Não existe produto com ID = " + produtoId);
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
 };
-
 
 const deleteProduto = async (req, res) => {
-  try {
-    const { produtoId } = req.params;
-    const deleted = await models.Produto.destroy({
-      where: { id: produtoId }
-    });
-    if (deleted) {
-      // Troquei o status 204 por 200 para melhor visualização.
-      //return res.status(204);
-      res.status(200).send("Produto removido com sucesso");
+    try {
+        const { produtoId } = req.params;
+        const deleted = await models.Produto.destroy({
+            where: { id: produtoId },
+        });
+        if (deleted) {
+            // Troquei o status 204 por 200 para melhor visualização.
+            //return res.status(204);
+            res.status(200).send("Produto removido com sucesso");
+        }
+        // throw new Error("Produto não encontrado");
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
-    // throw new Error("Produto não encontrado");
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
 };
-
 
 module.exports = {
     getAllProdutos,

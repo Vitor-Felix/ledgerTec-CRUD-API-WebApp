@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiArrowLeftCircle } from 'react-icons/fi';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FiArrowLeftCircle } from "react-icons/fi";
 
-import api from '../../services/api';
-
+import api from "../../services/api";
 
 export default function CadastraCategoria() {
-    const [categoria, setCategoria] = useState('');
+    const [categoria, setCategoria] = useState("");
 
     async function handleCadastro(e) {
         e.preventDefault();
 
         const data = {
-            categoria
-        }
+            categoria,
+        };
 
         try {
-            const response = await api.post('categorias', data);
+            const response = await api.post("categorias", data);
             alert(`ID do seu produto cadastrado: ${response.data.categoriaId}`);
 
             //Resetando valores, sem recarregar a pagina
-            setCategoria('');
+            setCategoria("");
         } catch (err) {
             alert(`Erro ao tentar cadastrar o produto: ${err}`);
         }
@@ -30,12 +29,11 @@ export default function CadastraCategoria() {
         <div className="cadastro-produto-container">
             <div className="content">
                 <section>
-
                     <h1>Cadastro de Categoria</h1>
                     <p>
-                        Para cadastar uma nova categoria na plataforma,
-                        basta selecionar escrever o nome da categoria e
-                        clicar em Cadastrar.
+                        Para cadastar uma nova categoria na plataforma, basta
+                        selecionar escrever o nome da categoria e clicar em
+                        Cadastrar.
                     </p>
 
                     <Link className="back-link" to="/categorias">
@@ -45,11 +43,15 @@ export default function CadastraCategoria() {
                 </section>
 
                 <form onSubmit={handleCadastro}>
-                    <input  placeholder="Escreva o nome da Categoria"
-                            value={categoria} 
-                            onChange={e => setCategoria(e.target.value)}/>
+                    <input
+                        placeholder="Escreva o nome da Categoria"
+                        value={categoria}
+                        onChange={(e) => setCategoria(e.target.value)}
+                    />
 
-                    <button className="button" type="submit">Cadastrar</button>
+                    <button className="button" type="submit">
+                        Cadastrar
+                    </button>
                 </form>
             </div>
         </div>
