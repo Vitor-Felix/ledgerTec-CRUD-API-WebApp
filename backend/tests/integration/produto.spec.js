@@ -65,7 +65,7 @@ describe('Produto', () => {
 
     it("should be able to delete a Produto", async () => {
         const response = await request(app)
-            .delete('/produtos/52').expect(200);
+            .delete('/produtos/1').expect(200);
 
         expect(response.text).toBe("Produto removido com sucesso");
     });
