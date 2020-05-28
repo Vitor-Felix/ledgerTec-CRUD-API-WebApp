@@ -139,7 +139,7 @@ foo@bar:~$ npm test
 
 
 ## Aplicação Web 
-> Todos os arquivos da API estão dentro da pasta frontend.
+> Todos os arquivos da Aplicação Web estão dentro da pasta frontend.
 
 Resumindo toda a tarefa, pode-se dizer que esta se tratava basicamente de criar uma aplicação web com [React](https://reactjs.org/), para a gestão de Produtos. Em outras palavras, criar páginas dinâmicas para o uso 
 das funcionalidades disponibilizadas pela API posteriormente criada.
