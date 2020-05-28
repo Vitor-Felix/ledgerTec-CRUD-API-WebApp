@@ -1,4 +1,4 @@
-.cadastro-produto-container {
+.atualiza-categoria-container {
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -9,7 +9,7 @@
     justify-content: center; 
 }
 
-.cadastro-produto-container .content {
+.atualiza-categoria-container .content {
     width: 100%;
     padding: 96px;
     background: #f0f0f5;
@@ -21,59 +21,43 @@
     align-items: center;
 }
 
-.cadastro-produto-container .content section {
+.atualiza-categoria-container .content section {
     width: 100%;
     max-width: 380px;
-    /* background-color: violet; */
 }
 
-.cadastro-produto-container .content section h1 {
-    /* margin: 64px 0 32px; */
-    /* margin: 0 0 50px;  */
+.atualiza-categoria-container .content section h1 {
     font-size: 32px;
 }
 
-.cadastro-produto-container .content section h2 {
+.atualiza-categoria-container .content section h2 {
     font-size: 18px;
     margin: 0 0 5px; 
     color: #41414d;
     text-decoration: underline;
-    /* font-size: 32px; */
 }
 
-.cadastro-produto-container .content section h2 span{
-    /* margin: 64px 0 32px; */
+.atualiza-categoria-container .content section h2 span{
     color: #e02041;
-    /* font-size: 32px; */
 }
 
-.cadastro-produto-container .content section p {
-    /* margin-top: 190px;   */
+.atualiza-categoria-container .content section p {
+    margin-top: 100px;  
     font-size: 18px;
     color: #737380;
     line-height: 32px;
 }
 
-.cadastro-produto-container .content form {
+.atualiza-categoria-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.cadastro-produto-container .content form * {
+.atualiza-categoria-container .content form * {
     margin-top: 8px;
 }
 
-.cadastro-produto-container .content form label {
-    font-size: 18px;
-}
-
-.cadastro-produto-container .content form select {
-    /* font-family: inherit;
-    font-size: 100%;
-    width : 100%;
-    height: 60px;
-    border-radius: 5px;
-    background-color: #fff; */
+.atualiza-categoria-container .content form select {
     font-family: inherit;
     font-size: 125%;
     width: 100%;

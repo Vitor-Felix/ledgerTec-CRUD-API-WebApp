@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FiArrowLeftCircle } from 'react-icons/fi';
 
 import api from '../../services/api';
-import './styles.css';
 
 
 export default function CadastraCategoria() {

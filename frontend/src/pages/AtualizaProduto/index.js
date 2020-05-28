@@ -69,7 +69,7 @@ export default function AtualizaProduto() {
     }
 
     return (
-        <div className="cadastro-produto-container">
+        <div className="atualiza-produto-container">
             <div className="content">
                 <section>
                     <h1>Atualização de Produto</h1>

@@ -52,7 +52,7 @@ export default function AtualizaCategoria() {
 
     
     return (
-        <div className="cadastro-produto-container">
+        <div className="atualiza-categoria-container">
             <div className="content">
                 <section>
                     <h1>Atualização de Categoria</h1>

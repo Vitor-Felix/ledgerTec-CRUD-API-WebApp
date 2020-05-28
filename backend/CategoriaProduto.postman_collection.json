@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "cce586e3-68a5-4e74-bb1c-7650b89e7ae1",
+		"name": "Desafio LedgerTec - Todas as Rotas",
+		"description": "O que deve ser feito:\n\n[X] - Crie uma Collection no Postman com 5 requisições, sendo uma para cada rota.\n\n[X] - Exporte a Collection, de preferência na versão 2.1, e salve o arquivo no diretório\ndo projeto Node com o nome Product.postman_collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Retorna todos os Produtos Cadastrados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9099/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "GET http://localhost:9099/produtos/\n\nRetorna os campos [id, descricao, categoria[id, categoria]] de todos os produtos cadastrados, por Response Body em formato JSON."
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna um Produto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9099/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "GET http://localhost:9099/produtos/produtoId\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria[id, categoria]] de apenas um produto dado seu id enviado por URL."
+					},
+					"response": []
+				},
+				{
+					"name": "Insere um Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoriaId\": 3,\n\t\"descricao\": \"BELO PRODUTO!!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "POST http://localhost:9099/produtos/\n\nCria novo produto no banco de dados através de Request Body JSON.\n\nSão requeridos dois campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, o id do novo produto criado."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza um Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoriaId\": 1,\n\t\"descricao\": \"ESTE CAMPO FOI ATUALIZADO!!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "PUT http://localhost:9099/produtos/produtoId\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
+					},
+					"response": []
+				},
+				{
+					"name": "Remove um Produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "DELETE http://localhost:9099/produtos/produtoId\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Retorna todas as Categorias Cadastradas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9099/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categorias"
+							]
+						},
+						"description": "GET http://localhost:9099/categorias/\n\nRetorna os campos [id, categoria] de todas as categorias cadastradas, por Response Body em formato JSON."
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna uma Categoria por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9099/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categorias",
+								"1"
+							]
+						},
+						"description": "GET http://localhost:9099/categorias/categoriaId\n\nRetorna por Response Body em formato JSON, os campos [id, categoria] de apenas uma categoria dado seu id enviado por URL."
+					},
+					"response": []
+				},
+				{
+					"name": "Insere uma Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoria\": \"Smartphone\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categorias"
+							]
+						},
+						"description": "POST http://localhost:9099/categoria/\n\nCria nova categoria no banco de dados através de Request Body JSON.\n\nÉ apenas requerido um campo: \n\n    'categoria'   -> Nome da categoria.\n\nRetorna por Response Body em formato JSON, o id da nova categoria criada."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza uma Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoria\": \"SmartWatch\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categorias",
+								"1"
+							]
+						},
+						"description": "PUT http://localhost:9099/categorias/categoriaId\n\nAtualiza categoria no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nÉ atualizado o campo: \n\n    'categoria'   -> Nome da categoria.\n\nRetorna por Response Body em formato JSON, as informações da categoria atualizada."
+					},
+					"response": []
+				},
+				{
+					"name": "Remove uma Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9099/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categorias",
+								"1"
+							]
+						},
+						"description": "DELETE http://localhost:9099/categorias/categoriaId\n\nDeleta categoria no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+					},
+					"response": []
+				},
+				{
+					"name": "Retorna todos os produtos de uma Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9099/categoria/1/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9099",
+							"path": [
+								"categoria",
+								"1",
+								"produtos"
+							]
+						},
+						"description": "GET http://localhost:9099/categoria/:id/produtos\n\nRetorna os campos [id, descricao, categoria{id, categoria}] de todos os produtos da categoria qual id foi passada na URL da requisição. Retorno por Response Body em formato JSON."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
