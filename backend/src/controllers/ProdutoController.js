@@ -59,14 +59,14 @@ const updateProduto = async (req, res) => {
       where: { id: produtoId }
     });
     if (updated) {
-      // O correto aqui seria status 204, mas deixei 200 para melhor visualização.
+      // Troquei o status 204 por 200 para melhor visualização.
       //return res.status(204);
       const updatedPost = await models.Produto.findOne({
         where: { id: produtoId },
         attributes: ['id', 'descricao'],
         include: {
             model: models.Categoria,
-            attributes: ['categoria'],
+            attributes: ['id', 'categoria'],
             as: "categoria"
         }
       });
@@ -87,11 +87,11 @@ const deleteProduto = async (req, res) => {
       where: { id: produtoId }
     });
     if (deleted) {
-      // O correto aqui seria status 204, mas deixei 200 para melhor visualização.
+      // Troquei o status 204 por 200 para melhor visualização.
       //return res.status(204);
       res.status(200).send("Produto removido com sucesso");
     }
-    throw new Error("Produto não encontrado");
+    // throw new Error("Produto não encontrado");
   } catch (error) {
     return res.status(500).send(error.message);
   }

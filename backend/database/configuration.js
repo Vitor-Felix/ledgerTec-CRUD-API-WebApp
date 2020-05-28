@@ -7,7 +7,7 @@ module.exports = {
   },
   "test": {
     "dialect": "sqlite",
-    "storage": ":memory"
+    "storage": __dirname + "/dbTest.sqlite3"
   },
   "production": {
     "dialect": "sqlite",

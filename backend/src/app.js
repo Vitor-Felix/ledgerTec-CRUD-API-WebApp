@@ -9,5 +9,5 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(9099);
-
+// app.listen(9099);
+module.exports = app;
