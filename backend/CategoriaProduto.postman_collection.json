@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "cce586e3-68a5-4e74-bb1c-7650b89e7ae1",
 		"name": "Desafio LedgerTec - Todas as Rotas",
-		"description": "O que deve ser feito:\n\n[X] - Crie uma Collection no Postman com 5 requisições, sendo uma para cada rota.\n\n[X] - Exporte a Collection, de preferência na versão 2.1, e salve o arquivo no diretório\ndo projeto Node com o nome Product.postman_collection.json",
+		"description": "Arquivo com todas as rotas implementadas.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -46,7 +46,7 @@
 								"1"
 							]
 						},
-						"description": "GET http://localhost:9099/produtos/produtoId\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria[id, categoria]] de apenas um produto dado seu id enviado por URL."
+						"description": "GET http://localhost:9099/produtos/{produtoId}\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria[id, categoria]] de apenas um produto dado seu id enviado por URL."
 					},
 					"response": []
 				},
@@ -105,7 +105,7 @@
 								"1"
 							]
 						},
-						"description": "PUT http://localhost:9099/produtos/produtoId\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
+						"description": "PUT http://localhost:9099/produtos/{produtoId}\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
 					},
 					"response": []
 				},
@@ -135,7 +135,7 @@
 								"1"
 							]
 						},
-						"description": "DELETE http://localhost:9099/produtos/produtoId\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+						"description": "DELETE http://localhost:9099/produtos/{produtoId}\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
 					},
 					"response": []
 				}
@@ -182,7 +182,7 @@
 								"1"
 							]
 						},
-						"description": "GET http://localhost:9099/categorias/categoriaId\n\nRetorna por Response Body em formato JSON, os campos [id, categoria] de apenas uma categoria dado seu id enviado por URL."
+						"description": "GET http://localhost:9099/categorias/{categoriaId}\n\nRetorna por Response Body em formato JSON, os campos [id, categoria] de apenas uma categoria dado seu id enviado por URL."
 					},
 					"response": []
 				},
@@ -241,7 +241,7 @@
 								"1"
 							]
 						},
-						"description": "PUT http://localhost:9099/categorias/categoriaId\n\nAtualiza categoria no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nÉ atualizado o campo: \n\n    'categoria'   -> Nome da categoria.\n\nRetorna por Response Body em formato JSON, as informações da categoria atualizada."
+						"description": "PUT http://localhost:9099/categorias/{categoriaId}\n\nAtualiza categoria no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nÉ atualizado o campo: \n\n    'categoria'   -> Nome da categoria.\n\nRetorna por Response Body em formato JSON, as informações da categoria atualizada."
 					},
 					"response": []
 				},
@@ -271,7 +271,7 @@
 								"1"
 							]
 						},
-						"description": "DELETE http://localhost:9099/categorias/categoriaId\n\nDeleta categoria no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+						"description": "DELETE http://localhost:9099/categorias/{categoriaId}\n\nDeleta categoria no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
 					},
 					"response": []
 				},
@@ -293,7 +293,7 @@
 								"produtos"
 							]
 						},
-						"description": "GET http://localhost:9099/categoria/:id/produtos\n\nRetorna os campos [id, descricao, categoria{id, categoria}] de todos os produtos da categoria qual id foi passada na URL da requisição. Retorno por Response Body em formato JSON."
+						"description": "GET http://localhost:9099/categoria/{categoriaId}/produtos\n\nRetorna os campos [id, descricao, categoria{id, categoria}] de todos os produtos da categoria qual id foi passada na URL da requisição. Retorno por Response Body em formato JSON."
 					},
 					"response": []
 				}

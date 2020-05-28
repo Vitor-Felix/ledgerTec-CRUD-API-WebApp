@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "82774967-4c01-4c7b-be69-7e876e73f600",
+		"_postman_id": "078cc885-6930-482f-aeed-4b461d3b9e43",
 		"name": "Desafio LedgerTec - Produtos",
 		"description": "O que deve ser feito:\n\n[X] - Crie uma Collection no Postman com 5 requisições, sendo uma para cada rota.\n\n[X] - Exporte a Collection, de preferência na versão 2.1, e salve o arquivo no diretório\ndo projeto Node com o nome Product.postman_collection.json",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -22,7 +22,7 @@
 						"produtos"
 					]
 				},
-				"description": "GET http://localhost:9099/produtos/\n\nRetorna os campos [id, descricao, categoria] de todos os produtos cadastrados, por Response Body em formato JSON."
+				"description": "GET http://localhost:9099/produtos/\n\nRetorna os campos [id, descricao, categoria[id, categoia]] de todos os produtos cadastrados, por Response Body em formato JSON."
 			},
 			"response": []
 		},
@@ -43,7 +43,7 @@
 						"1"
 					]
 				},
-				"description": "GET http://localhost:9099/produtos/produtoId\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria] de apenas um produto dado seu id enviado por URL."
+				"description": "GET http://localhost:9099/produtos/{produtoId}\n\nRetorna por Response Body em formato JSON, os campos [id, descricao, categoria] de apenas um produto dado seu id enviado por URL."
 			},
 			"response": []
 		},
@@ -54,7 +54,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"categoriaId\": 36,\n\t\"descricao\": \"Call me a space man!!!\"\n}",
+					"raw": "{\n\t\"categoriaId\": 2,\n\t\"descricao\": \"Novo produto pelo Postman\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +103,7 @@
 						"1"
 					]
 				},
-				"description": "PUT http://localhost:9099/produtos/produtoId\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
+				"description": "PUT http://localhost:9099/produtos/{produtoId}\n\nAtualiza produto no banco de dados através de Request Body JSON, dado seu id enviado na URL.\n\nPodem ser atualizados um, ou ambos dos campos: \n\n    'categoriaId' -> Id da categoria ao qual o produto pertence.\n\n    'descricao'   -> Descrição do produto.\n\nRetorna por Response Body em formato JSON, as informações do produto atualizado."
 			},
 			"response": []
 		},
@@ -133,7 +133,7 @@
 						"2"
 					]
 				},
-				"description": "DELETE http://localhost:9099/produtos/produtoId\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
+				"description": "DELETE http://localhost:9099/produtos/{produtoId}\n\nDeleta produto no banco de dados, dado seu id enviado na URL.\n\nRetorna informação sobre o resultado da query."
 			},
 			"response": []
 		}
